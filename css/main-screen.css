@@ -1,0 +1,67 @@
+.main {
+  bottom: 20px;
+}
+
+.file-browser {
+  height: 100%;
+  width: 255px;
+  background-color: aquamarine;
+  top: 0px;
+  position: fixed;
+  margin-left: 48px;
+  overflow: auto;
+}
+
+.file-browser div {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+}
+
+.tab-menu {
+  background-color: rgb(30, 30, 30);
+  display: flex;
+  height: 25px;
+  border: 0px;
+  border-bottom: 1px;
+  border-color: black;
+  border-style: solid;
+}
+
+.tab-menu button {
+  padding: 0 35px 0 10px;
+  border-right: 0px;
+  background-color: rgb(30, 30, 30);
+  border: 0px;
+  -webkit-transition: 250ms;
+  -o-transition: 250ms;
+  transition: 250ms;
+  border: 1px;
+  border-bottom: 0px;
+  border-style: solid;
+  border-color: black;
+}
+
+.tab-menu button:hover {
+  background-color: rgb(34, 34, 34);
+}
+
+#container {
+  position: fixed;
+  height: 100%;
+  width: calc(100% - 303px);
+  margin-top: 0px;
+  top: 0px;
+  margin-left: 303px;
+  resize: none;
+  background-color: aquamarine;
+}
+
+.monaco-editor {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  resize: none;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
