@@ -1,60 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="./css/main-screen.css">
-        <link rel="stylesheet" data-name="vs/editor/editor.main" href="node_modules/monaco-editor/min/vs/editor/editor.main.css">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="veiwport" content="width=device-width, inital-scale=1.0">
-        <title>Linguine</title>
-    </head>
-    <body>
 
-        <div id="main">
-            <div id="container">
-              <div class="tab-menu">
-                <button>code.txt</button>
-                <button>index.html</button>
-                <button>style.css</button>
+<head>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/main-screen.css">
+  <link rel="stylesheet" href="./css/file-browser.css">
+  <link rel="stylesheet" data-name="vs/editor/editor.main" href="node_modules/monaco-editor/min/vs/editor/editor.main.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="veiwport" content="width=device-width, inital-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap');
+  </style>
+  <title>Electron Text Editor</title>
+</head>
 
+<body>
 
-              </div>
-            </div>
-
-            <div class="file-browser" id="file-browser">
-                <span class="document-name">
-                    code.txt
-                </span>
-            </div>
-        </div>
-
-            <div class="sidenav">
-                <button>
-                    <a href="#">A</a>
-                </button>
-                <button>
-                    <a href="#">B</a>
-                </button>
-                <button>
-                    <a href="#">C</a>
-                </button>
-                <button>
-                    <a href="#">D</a>
-                </button>
-            </div>
-
-        <div class="footer">
-            <span id="language">language</span>
-            <span id="line-count">line count</span>
-        </div>
-
-        <script>var require = { paths: { 'vs': 'node_modules/monaco-editor/min/vs' } }; </script>
-        <script src="node_modules/monaco-editor/min/vs/loader.js"></script>
-        <script src="node_modules/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
-        <script src="node_modules/monaco-editor/min/vs/editor/editor.main.js"></script>
-        <script src="./javascript/renderer.js"></script>
+  <div class="main">
+    <div id="container">
+      <div class="tab-menu">
+        <button class="tab-button">
+          <spn>code.txt</spn> <a onclick="CloseFile">X</a>
+        </button>
+        <button class="tab-button">
+          <spn>style.css</spn> <a onclick="CloseFile">X</a>
+        </button>
+        <button class="tab-button">
+          <spn>index.html</spn> <a onclick="CloseFile">X</a>
+        </button>
 
 
-    </body>
+      </div>
+    </div>
+
+    <div class="file-browser" id="file-browser">
+      <div class="no-file">
+        <button id="open-project" onclick="openFile">Add Folder</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidenav">
+    <button>
+      <a href="#">A</a>
+    </button>
+    <button>
+      <a href="#">B</a>
+    </button>
+    <button>
+      <a href="#">C</a>
+    </button>
+    <button>
+      <a href="#">D</a>
+    </button>
+  </div>
+
+  <div class="footer">
+    <span id="language">language</span>
+    <span id="line-count">line count</span>
+  </div>
+
+  <script>
+    var require = {
+      paths: {
+        'vs': 'node_modules/monaco-editor/min/vs'
+      }
+    };
+  </script>
+  <script src="node_modules/monaco-editor/min/vs/loader.js"></script>
+  <script src="node_modules/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
+  <script src="node_modules/monaco-editor/min/vs/editor/editor.main.js"></script>
+  <script src="./javascript/renderer.js"></script>
+
+
+</body>
+
 </html>

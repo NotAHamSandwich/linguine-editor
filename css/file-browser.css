@@ -1,0 +1,15 @@
+.no-file {
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-file button {
+  padding: 3px 20px 3px 20px;
+  font-size: 15px;
+  font-family: 'Dosis', sans-serif;
+}

@@ -1,5 +1,9 @@
 .main {
+  position: fixed;
   bottom: 20px;
+  height: 100%;
+  width: 100%;
+  font-family: 'Dosis', sans-serif;
 }
 
 .file-browser {
@@ -28,10 +32,9 @@
   border-style: solid;
 }
 
-.tab-menu button {
-  padding: 0 35px 0 10px;
+.tab-button {
+  padding: 0 10px 0 10px;
   border-right: 0px;
-  background-color: rgb(30, 30, 30);
   border: 0px;
   -webkit-transition: 250ms;
   -o-transition: 250ms;
@@ -40,6 +43,16 @@
   border-bottom: 0px;
   border-style: solid;
   border-color: black;
+  transition: 250ms
+}
+
+.tab-button a {
+  margin-left: 12px;
+  background-color: inherit;
+}
+
+.tab-menu button {
+  background-color: rgb(30, 30, 30);
 }
 
 .tab-menu button:hover {
@@ -48,7 +61,7 @@
 
 #container {
   position: fixed;
-  height: 100%;
+  height: calc(100% - 45px);
   width: calc(100% - 303px);
   margin-top: 0px;
   top: 0px;

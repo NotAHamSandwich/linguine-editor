@@ -60,8 +60,15 @@ body {
   flex-direction: row-reverse;
   align-items: center;
   font-size: 16px;
+  font-family: 'Dosis', sans-serif;
+  background-color: rgb(33,33,33);
 }
 
 .footer span {
   margin-right: 7px;
+  background-color: rgb(33, 33, 33);
+}
+
+.footer span:hover {
+  background-color: rgb(36, 36, 36);
 }

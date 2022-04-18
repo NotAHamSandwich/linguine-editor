@@ -14,5 +14,3 @@ setTimeout(function () {
 		lineNumbers: 'on'
 	});
 }, 2000);
-
-
