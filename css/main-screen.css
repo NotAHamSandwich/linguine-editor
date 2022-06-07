@@ -3,23 +3,8 @@
   bottom: 20px;
   height: 100%;
   width: 100%;
-  font-family: 'Dosis', sans-serif;
-}
-
-.file-browser {
-  height: 100%;
-  width: 255px;
-  background-color: aquamarine;
-  top: 0px;
-  position: fixed;
-  margin-left: 48px;
-  overflow: auto;
-}
-
-.file-browser div {
-  -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none; /* for Firefox */
-  overflow-y: scroll;
+  font-family: "Dosis", sans-serif;
+  background-color: rgb(40, 44, 51);
 }
 
 .tab-menu {
@@ -27,54 +12,72 @@
   display: flex;
   height: 25px;
   border: 0px;
-  border-bottom: 1px;
-  border-color: black;
-  border-style: solid;
+  top: 0px;
+  position: fixed;
+  left: 293px;
+  float: left;
+  padding: 0px;
+  margin: 0px;
 }
-
-.tab-button {
-  padding: 0 10px 0 10px;
-  border-right: 0px;
-  border: 0px;
-  -webkit-transition: 250ms;
-  -o-transition: 250ms;
-  transition: 250ms;
-  border: 1px;
-  border-bottom: 0px;
-  border-style: solid;
-  border-color: black;
-  transition: 250ms
+.tab-menu li {
+  list-style-type: none;
+  display: flex;
 }
-
-.tab-button a {
-  margin-left: 12px;
-  background-color: inherit;
+.tab-menu div {
+  background-color: rgb(40, 44, 51);
 }
-
-.tab-menu button {
-  background-color: rgb(30, 30, 30);
+.tab-menu div:hover {
+  background-color: rgb(44, 48, 55);
 }
-
 .tab-menu button:hover {
-  background-color: rgb(34, 34, 34);
+  background-color: rgb(0, 128, 255) !important;
+}
+
+.tab-button button {
+  background-color: rgb(40, 44, 51);
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 3px;
+  z-index: 10;
+  border: 0px;
+}
+.tab-button div {
+  padding-left: 55px;
+  padding-right: 55px;
+}
+
+.tab-selected {
+  border: 0px;
+  border-right: 1px;
+  border-left: 1px;
+  border-style: solid;
+  border-color: black;
+  background-color: rgb(52, 56, 63) !important;
+}
+.tab-selected a {
+  background-color: rgb(44, 48, 55);
+}
+.tab-selected > * {
+  background-color: rgb(52, 56, 63) !important;
 }
 
 #container {
   position: fixed;
   height: calc(100% - 45px);
-  width: calc(100% - 303px);
+  width: calc(100% - 293px);
   margin-top: 0px;
-  top: 0px;
-  margin-left: 303px;
+  bottom: 20px;
+  margin-left: 293px;
   resize: none;
-  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+#container > * {
+  margin-bottom: 50px;
 }
 
-.monaco-editor {
-  margin: 0px;
-  height: 100%;
-  width: 100%;
-  resize: none;
-  flex-grow: 1;
-  flex-shrink: 0;
-}
+/*# sourceMappingURL=main-screen.css.map */

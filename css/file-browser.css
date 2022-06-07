@@ -4,12 +4,60 @@
   display: -ms-flex;
   width: 100%;
   height: 100%;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 }
-
 .no-file button {
   padding: 3px 20px 3px 20px;
   font-size: 15px;
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
+  margin-bottom: 60px;
 }
+
+.file-browser {
+  height: 100%;
+  width: 245px;
+  background-color: aquamarine;
+  top: 0px;
+  position: fixed;
+  margin-left: 48px;
+  overflow: auto;
+}
+
+.file-explorer li > li > div > span {
+  padding-left: 10px;
+}
+.file-explorer li > li > li > div > span {
+  padding-left: 20px;
+}
+.file-explorer li > li > li > li > div > span {
+  padding-left: 30px;
+}
+.file-explorer li > li > li > li > div > span {
+  padding-left: 40px;
+}
+.file-explorer li {
+  list-style: none;
+  color: white;
+}
+.file-explorer div {
+  background-color: #17202A;
+  padding-left: 25px;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+  transition: 250ms;
+}
+.file-explorer div:hover {
+  background-color: #1B2631;
+}
+.file-explorer ul {
+  padding: 0px;
+}
+
+#folder-header {
+  background-color: #17202A;
+  padding-left: 5px;
+}
+
+/*# sourceMappingURL=file-browser.css.map */
