@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="test">
+        <div id="pan1">MENU</div>
+        <div id="rpanrResize">&nbsp;</div>
+        <div id="container">BODY</div>
+    </div>
+
+    <script>
+        var rpanrResize = document.getElementById('rpanrResize')
+        var pan1 = document.getElementById('pan1')
+        var pan2 = document.getElementById('container')
+
+        let ismdwn = 0
+        rpanrResize.addEventListener('mousedown', mD)
+
+        function mD(event) {
+            ismdwn = 1
+            document.body.addEventListener('mousemove', mV)
+            document.body.addEventListener('mouseup', end)
+        }
+
+        function mV(event) {
+            if (ismdwn === 1) {
+                pan1.style.flexBasis = event.clientX + "px"
+            } else {
+                end()
+            }
+        }
+        const end = (e) => {
+            ismdwn = 0
+            document.body.removeEventListener('mouseup', end)
+            rpanrResize.removeEventListener('mousemove', mV)
+        }
+    </script>
+    <script>var require = { paths: { 'vs': 'node_modules/monaco-editor/min/vs' } }; </script>
+    <script src="node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script src="node_modules/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
+    <script src="node_modules/monaco-editor/min/vs/editor/editor.main.js"></script>
+    <script src="./renderer.js"></script>
+
+    
+</body>
+
+<style>
+    .test {
+        display: flex;
+        border: 1px black solid;
+        width: 100%;
+        height: 200px;
+    }
+
+    #pan1 {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 20%; /* initial status */
+    }
+
+    #container {
+    flex-grow: 1;
+    flex-shrink: 0;
+    }
+
+    #rpanrResize {
+    flex-grow: 0;
+    flex-shrink: 0;
+    background: #1b1b51;
+    width: 0.2rem;
+    cursor: col-resize;
+    margin: 0 0 0 auto;
+    }
+    #rpanrResize:hover {
+        background: #0000ff;
+    }
+
+    .monaco-editor {
+            height: 100%;
+            width: 100%;
+    }
+</style>
+
+</html>
