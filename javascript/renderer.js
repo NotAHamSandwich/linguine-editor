@@ -1,5 +1,8 @@
+let fileCont = 'no file loaded';
+
+
 var editor = monaco.editor.create(document.getElementById('container'), {
-	value: "// First line\nfunction hello() {\n\talert('Hello world!');\n}\n// Last line",
+	value: "no file loaded",
 	language: 'javascript',
 
 	lineNumbers: 'on',
@@ -9,10 +12,17 @@ var editor = monaco.editor.create(document.getElementById('container'), {
 	theme: 'vs-dark',
 	automaticLayout: true
 });
-setTimeout(function () {
-	editor.updateOptions({
-		lineNumbers: 'on'
-	});
-}, 2000);
 
 
+async function openDir() {
+  let dir = await window.showDirectoryPicker();
+	console.log(dir)
+}
+
+async function openFile() {
+	[fileHandle] = await window.showOpenFilePicker();
+  const fileData = await fileHandle.getFile();
+	let text = await fileData.text();
+	console.log(text)
+
+}

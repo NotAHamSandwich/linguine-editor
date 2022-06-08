@@ -1,0 +1,98 @@
+$main-text-editor-color: rgb(40,44,51);
+$main-text-editor-hover-color: rgb(44,48,55);
+$main-text-editor-selected-color: rgb(52, 56, 63);
+
+.main {
+  position: fixed;
+  bottom: 20px;
+  height: 100%;
+  width: 100%;
+  font-family: 'Dosis', sans-serif;
+  background-color: $main-text-editor-color;
+}
+
+.tab-menu {
+  background-color: rgb(30, 30, 30);
+  display: flex;
+  height: 25px;
+  border: 0px;
+  top: 0px;
+  position: fixed;
+  left: 293px;
+  float: left;
+  padding: 0px;
+  margin: 0px;
+
+  li {
+    list-style-type: none;
+    display: flex;
+  }
+
+  div {
+    background-color: $main-text-editor-color;
+  }
+
+  div:hover {
+    background-color: $main-text-editor-hover-color;
+
+  }
+
+  button:hover {
+    background-color: rgb(0, 128, 255) !important;
+  }
+}
+
+.tab-button {
+
+  button {
+    background-color: $main-text-editor-color;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 3px;
+    z-index: 10;
+    border: 0px;
+  }
+
+  div {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+}
+
+.tab-selected {
+  border: 0px;
+  border-right: 1px;
+  border-left: 1px;
+  border-style: solid;
+  border-color: black;
+  background-color: $main-text-editor-selected-color !important;
+
+  a {
+    background-color: rgb(44,48,55);
+  }
+
+  > * {
+    background-color: $main-text-editor-selected-color !important;
+  }
+
+}
+
+#container {
+  position: fixed;
+  height: calc(100% - 45px);
+  width: calc(100% - 293px);
+  margin-top: 0px;
+  bottom: 20px;
+  margin-left: 293px;
+  resize: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+
+  > * {
+    margin-bottom: 50px;
+  }
+}
