@@ -76,8 +76,41 @@
   align-items: center;
   font-size: 25px;
 }
-#container > * {
-  margin-bottom: 50px;
+
+.ace-editor {
+  bottom: 0px !important;
+}
+
+.settings-menu {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+.settings-menu h1 {
+  margin: 0px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.settings-menu label {
+  font-size: 20px;
+}
+.settings-menu .checkbox-settings-item {
+  display: flex;
+  flex-direction: column;
+}
+.settings-menu .checkbox-settings-item span {
+  font-size: 14px;
+}
+.settings-menu .setting-item {
+  display: flex;
+  align-items: center;
+}
+.settings-menu .setting-item input[type=checkbox i] {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 /*# sourceMappingURL=main-screen.css.map */

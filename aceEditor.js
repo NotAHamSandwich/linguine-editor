@@ -10,8 +10,186 @@ let j = 2;
 let openFiles = []
 let filesInBrowser = []
 let openedFiles = []
+let footerTypeData = []
+let footerLineCountData = []
 let fileInBrowserID = 0;
 let phase = true;
+var fileTypes =  {
+  " ": "abap",
+  " ": "abc",
+  " ": "actionscript",
+  " ": "ada",
+  " ": "alda",
+  " ": "apache_config",
+  " ": "apex",
+  " ": "applescript",
+  " ": "aql",
+  " ": "asciidoc",
+  " ": "asl",
+  " ": "assembly_x86",
+  " ": "autohotkey",
+  " ": "batchfile",
+  " ": "c_cpp",
+  " ": "c9search",
+  " ": "cirru",
+  " ": "clojure",
+  " ": "cobol",
+  " ": "coffee",
+  " ": "coldfusion",
+  " ": "crystal",
+  ".cs": "csharp",
+  " ": "csound_document",
+  " ": "csound_orchestra",
+  " ": "csound_score",
+  ".csp": "csp",
+  ".css": "css",
+  " ": "curly",
+  " ": "d",
+  " ": "dart",
+  " ": "diff",
+  " ": "django",
+  " ": "dockerfile",
+  " ": "dot",
+  " ": "drools",
+  " ": "edifact",
+  " ": "eiffel",
+  " ": "ejs",
+  " ": "elixir",
+  " ": "elm",
+  " ": "erlang",
+  " ": "forth",
+  " ": "fortran",
+  ".fs": "fsharp",
+  " ": "fsl",
+  " ": "ftl",
+  " ": "gcode",
+  " ": "gherkin",
+  " ": "gitgnore",
+  " ": "glsl",
+  " ": "gobstones",
+  " ": "golang",
+  " ": "graphqlschema",
+  " ": "groovy",
+  " ": "haml",
+  " ": "handlebars",
+  " ": "haskell_cabal",
+  " ": "haskell",
+  " ": "haxe",
+  " ": "hjson",
+  " ": "html_elixir",
+  " ": "html_ruby",
+  ".html": "html",
+  " ": "ini",
+  " ": "io",
+  " ": "jack",
+  " ": "jade",
+  ".java": "java",
+  ".js": "javascript",
+  ".json": "json",
+  " ": "json5",
+  " ": "jsoniq",
+  " ": "jsp",
+  " ": "jssm",
+  " ": "jsx",
+  " ": "julia",
+  " ": "kotlin",
+  " ": "latex",
+  " ": "latte",
+  " ": "less",
+  " ": "liquid",
+  " ": "lisp",
+  " ": "livescript",
+  " ": "logiql",
+  " ": "lsl",
+  " ": "lua",
+  " ": "luapage",
+  " ": "lucene",
+  " ": "makefile",
+  " ": "markdown",
+  " ": "mask",
+  " ": "matlab",
+  " ": "maze",
+  " ": "mediawiki",
+  " ": "mel",
+  " ": "mips",
+  " ": "mixal",
+  " ": "mushcode",
+  " ": "mysql",
+  " ": "nginx",
+  " ": "nim",
+  " ": "nix",
+  " ": "nsis",
+  " ": "nunjucks",
+  " ": "objectivec",
+  " ": "ocaml",
+  " ": "pascal",
+  " ": "perl",
+  " ": "pgsql",
+  " ": "php laravel blade",
+  ".php": "php",
+  " ": "pig",
+  ".txt": "plain_text",
+  " ": "powershell",
+  " ": "praat",
+  " ": "prisma",
+  " ": "prolog",
+  " ": "properites",
+  " ": "protobuf",
+  " ": "puppet",
+  ".py": "python",
+  " ": "qml",
+  " ": "r",
+  " ": "raku",
+  " ": "razor",
+  " ": "rdoc",
+  " ": "red",
+  " ": "redshift",
+  " ": "rhtml",
+  " ": "rst",
+  " ": "ruby",
+  " ": "rust",
+  ".sass": "sass",
+  " ": "scad",
+  " ": "scala",
+  " ": "scheme",
+  " ": "scrypt",
+  ".scss": "scss",
+  " ": "sh",
+  " ": "sjs",
+  " ": "slim",
+  " ": "smarty",
+  " ": "smithy",
+  " ": "snippets",
+  " ": "soy_template",
+  " ": "space",
+  " ": "sparql",
+  " ": "sql",
+  " ": "sqlserver",
+  " ": "stylus",
+  " ": "svg",
+  " ": "swift",
+  " ": "tcl",
+  " ": "terraform",
+  " ": "tex",
+  " ": "text",
+  " ": "textile",
+  " ": "toml",
+  " ": "tsx",
+  " ": "turtle",
+  " ": "twig",
+  " ": "typescript",
+  " ": "vala",
+  " ": "vbscript",
+  " ": "velocity",
+  " ": "verilog",
+  " ": "vhdl",
+  " ": "visualforce",
+  " ": "wollok",
+  " ": "xml",
+  " ": "xquery",
+  " ": "yaml",
+  " ": "zeek",
+}
 
 let editorLib = {
   init() {
@@ -26,7 +204,8 @@ let editorLib = {
     editor.setOptions({
         enableBasicAutocompletion: true,
         enableSnippets: true,
-        enableLiveAutocompletion: true
+        enableLiveAutocompletion: true,
+        showPrintMargin: false,
     });
   }
 }
@@ -39,6 +218,9 @@ document.addEventListener("keydown", function(e) {
   }
   if(e.key.toLowerCase() === 'o' && e.metaKey) {
     openFolder()
+  }
+  if (e.key.toLowerCase() === 'p' && e.metaKey) {
+    openSettingsTab()
   }
 });
 
@@ -102,6 +284,32 @@ function readDirRec(path) {
 
 }
 
+function openSettingsTab() {
+  const tab = document.createElement('li');
+  const tabDiv = document.createElement('div');
+  const tabTextElement = document.createElement('span')
+  const tabText = document.createTextNode("Settings");
+  const tabClose = document.createElement('button')
+  const tabCloseText = document.createTextNode('X');
+  tabDiv.appendChild(tabTextElement);
+  tabTextElement.appendChild(tabText);
+  tabClose.appendChild(tabCloseText);
+  tabClose.onclick = closeFile
+  tabDiv.onclick = openSettings
+  tab.classList.add('tab-button');
+  tab.appendChild(tabDiv);
+  tab.appendChild(tabClose);
+  tabClose.id = i.toString().concat("close");
+  tabDiv.id = e.toString().concat('div');
+  const element = document.getElementById('tab-menu')
+  element.appendChild(tab);
+  i++;
+  e++;
+  let className = document.getElementsByClassName('tab-selected')
+  className[0].classList.remove('tab-selected')
+  tab.classList.add("tab-selected")
+}
+
 function openFolderBrowserTab() {
   let tabId = this.id
   console.log(tabId)
@@ -134,14 +342,24 @@ function openFileBrowserTab() {
     }
   }
   openedFiles[openedFiles.length] = name
-  console.log(file)
   editor = ace.edit("container");
   var newFile = ace.createEditSession(file);
   openFiles[openFiles.length] = newFile;
   editorLib.init();
   editor.setSession(newFile)
-  editor.session.setMode("ace/mode/javascript")
-  makeTab(name, itemId)
+  let fileExt = pathTool.extname(name)
+  let fileType = fileTypes[fileExt].toString()
+  console.log(fileType)
+  editor.session.setMode("ace/mode/" + fileType)
+  makeTab(name)
+  const lang = document.getElementById('lang')
+  lang.innerText = fileType
+  footerTypeData[footerTypeData.length] = fileType
+  editor.session.selection.on('changeCursor', function(){
+    const lineCount = document.getElementById('line-count')
+    let cursorPos = editor.getCursorPosition()
+    lineCount.innerText = cursorPos.row + ":" + cursorPos.column
+  });
 }
 
 function arrayMove(arr, fromIndex, toIndex) {
@@ -185,7 +403,7 @@ function makeFileItemParent(name, type) {
   j++;
 }
 
-function makeTab(name, id) {
+function makeTab(name) {
   const tab = document.createElement('li');
   const tabDiv = document.createElement('div');
   const tabTextElement = document.createElement('span')
@@ -198,7 +416,6 @@ function makeTab(name, id) {
   tabClose.onclick = closeFile
   tabDiv.onclick = openTab
   tab.classList.add('tab-button');
-  tab.classList.add(id);
   tab.appendChild(tabDiv);
   tab.appendChild(tabClose);
   tabClose.id = i.toString().concat("close");
@@ -227,8 +444,6 @@ function closeFile() {
   btn.parentNode.remove();
   let intBtnId = parseInt(btnId)
   openFiles[intBtnId] = null
-  var newFile = ace.createEditSession('/n')
-  editor.setSession(newFile)
   let extra = document.createElement('div')
   extra.classList.add('tab-selected')
   document.body.appendChild(extra)
@@ -300,11 +515,14 @@ function openTab() {
     if (name === tabName) {
       underUnderKids[0].style.backgroundColor = 'green'
     }*/
+    let fileType = footerTypeData[intId]
+    const lang = document.getElementById('lang')
+    lang.innerText = fileType
 }
 
+function openSettings() {
 
-
-
+}
 
 function save() {
   const editorValue = editor.getValue();

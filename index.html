@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/ace.css">
   <link rel="stylesheet" href="./css/main-screen.css">
   <link rel="stylesheet" href="./css/file-browser.css">
@@ -20,8 +20,50 @@
 
   <div class="main">
     <div id="container" class="main-container">
-      <span>You Haven't Open Any Files</span>
-      <button id="open-project" onclick="openFile()">Add Folder</button>
+      <div style="display: none">
+        <span>You Haven't Open Any Files</span>
+        <button id="open-project" onclick="openFile()">Add Folder</button>
+      </div>
+      <div class="settings-menu">
+        <h1>Settings</h1>
+        <legend>
+          <div class='setting-item'>
+            <input type='checkbox'>
+            <div class='checkbox-settings-item'>
+              <label>Dark Mode</label>
+              <span>words</span>
+            </div>
+          </div>
+          <div class='setting-item'>
+            <input type='checkbox'>
+            <div class='checkbox-settings-item'>
+              <label>Dark Mode</label>
+              <span>words</span>
+            </div>
+          </div>
+          <div class='setting-item'>
+            <input type='checkbox'>
+            <div class='checkbox-settings-item'>
+              <label>Dark Mode</label>
+              <span>words</span>
+            </div>
+          </div>
+          <div class='setting-item'>
+            <input type='checkbox'>
+            <div class='checkbox-settings-item'>
+              <label>Dark Mode</label>
+              <span>words</span>
+            </div>
+          </div>
+          <div class='setting-item'>
+            <input type='checkbox'>
+            <div class='checkbox-settings-item'>
+              <label>Dark Mode</label>
+              <span>words</span>
+            </div>
+          </div>
+        </legend>
+      </div>
     </div>
     <div class='tab-selected'></div>
     <ul class="tab-menu" id="tab-menu">
@@ -58,8 +100,8 @@
   </div>
 
   <div class="footer">
-    <span id="language">language</span>
-    <span id="line-count">line count</span>
+    <span id="lang"></span>
+    <span id="line-count"></span>
   </div>
 
 
